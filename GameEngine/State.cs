@@ -6,6 +6,7 @@ namespace GameEngine;
 public abstract class State
 {
     public List<Actor> Actors { get; set; } = new List<Actor>();
+    public Game Game { get; set; } = null;
     
     public abstract void Enter();
     public abstract void Update(GameTime gameTime);

@@ -10,20 +10,22 @@ public class Engine
 {
     public static ContentManager Content { get; set; }
     
-    public Vector2 WindowSize { get; set; } = new Vector2(1280, 720);
+    public Vector2 WindowSize { get; set; } = new Vector2(1920, 1080);
     public string GameTitle { get; set; } = "Game | v0.1";
     public static float GameScale { get; set; } = 4f;
     
     public static SpriteBatch SpriteBatch { get; set; }
     
     private GraphicsDeviceManager _graphicsManager;
+    private Game _game;
 
     private Dictionary<string, State> _states = new Dictionary<string, State>();
     private State _currentState = null;
     private State _previousState = null;
     
-    public Engine(GraphicsDeviceManager graphicsManager, GraphicsDevice graphics)
+    public Engine(Game game, GraphicsDeviceManager graphicsManager, GraphicsDevice graphics)
     {
+        _game = game;
         SpriteBatch = new SpriteBatch(graphics);
         _graphicsManager = graphicsManager;
     }
@@ -67,6 +69,7 @@ public class Engine
 
     public void AddState(string stateName, State state)
     {
+        state.Game = _game;
         _states.Add(stateName, state);
     }
 
