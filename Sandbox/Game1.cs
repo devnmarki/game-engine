@@ -58,7 +58,7 @@ public class Game1 : Game
     {
         GraphicsDevice.Clear(Color.White);
         
-        Engine.SpriteBatch.Begin();
+        Engine.SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
         _engine.Draw();
         Engine.SpriteBatch.End();
 

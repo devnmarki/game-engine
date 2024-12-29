@@ -25,3 +25,5 @@ D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\obj\Debug\net6.0\refint\Sandbox
 D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\obj\Debug\net6.0\Sandbox.pdb
 D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\obj\Debug\net6.0\Sandbox.genruntimeconfig.cache
 D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\obj\Debug\net6.0\ref\Sandbox.dll
+D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\obj\Debug\net6.0\Sandbox.sourcelink.json
+D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\Content\entities\fynn_spritesheet.xnb
