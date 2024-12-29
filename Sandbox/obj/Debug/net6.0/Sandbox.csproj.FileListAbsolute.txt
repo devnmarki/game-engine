@@ -27,3 +27,8 @@ D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\obj\Debug\net6.0\Sandbox.genrun
 D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\obj\Debug\net6.0\ref\Sandbox.dll
 D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\obj\Debug\net6.0\Sandbox.sourcelink.json
 D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\Content\entities\fynn_spritesheet.xnb
+D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\ImGui.NET.dll
+D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\runtimes\linux-x64\native\libcimgui.so
+D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\runtimes\win-x64\native\cimgui.dll
+D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\runtimes\win-x86\native\cimgui.dll
+D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\runtimes\osx-x64\native\libcimgui.dylib
