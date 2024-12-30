@@ -13,7 +13,6 @@ namespace GameEngine;
 
 public class Engine
 {
-    public Vector2 WindowSize { get; set; } = new Vector2(1280, 720);
     public string GameTitle { get; set; } = "Game | v0.1";
     public static float GameScale { get; set; } = 4f;
     public static SpriteBatch SpriteBatch { get; set; }
@@ -21,6 +20,10 @@ public class Engine
     public static GameTime GameTime { get; set; }
     public static float DeltaTime { get; set; }
     
+    public const float TileSize = 16f;
+    public static readonly float ScaledTileSize = TileSize * GameScale;
+    public Vector2 WindowSize { get; set; } = new Vector2(20 * ScaledTileSize, 12 * ScaledTileSize);
+
     private GraphicsDeviceManager _graphicsManager;
     private GraphicsDevice _graphics; 
     private Game _game;
@@ -29,7 +32,7 @@ public class Engine
 
     private Dictionary<string, State> _states = new Dictionary<string, State>();
     public static State CurrentState = null;
-    private State _previousState = null;
+    private static State _previousState = null;
 
     private ImGuiRenderer _guiRenderer;
 
@@ -96,7 +99,7 @@ public class Engine
         _states.Add(stateName, state);
     }
 
-    public void ReloadCurrentState()
+    public static void ReloadCurrentState()
     {
         _previousState?.Actors.Clear();
         CurrentState.Enter();

@@ -14,6 +14,8 @@ public class Actor
     private Spritesheet _spritesheet = null;
     private int _sprite = 0;
 
+    protected Animator Animator { get; set; }
+
     public Vector2 Position;
     
     public List<Collider> Colliders { get; set; } = new List<Collider>();
@@ -34,12 +36,12 @@ public class Actor
 
     protected virtual void Create()
     {
-        
+        Animator = new Animator(this, _renderer);
     }
 
     public virtual void Update(GameTime gameTime)
     {
-        
+        Animator.Update();
     }
 
     public virtual void Draw()
@@ -48,6 +50,8 @@ public class Actor
             _renderer.DrawTexture(_texture, Position);
         if (_spritesheet != null)
             _renderer.DrawTexture(_spritesheet.Texture, Position, _spritesheet.Sprites[_sprite]);
+        
+        Animator.Render();
 
         foreach (var collider in Colliders)
         {

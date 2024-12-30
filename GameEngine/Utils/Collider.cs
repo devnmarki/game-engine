@@ -43,7 +43,7 @@ public class Collider
         if (Engine.DebugMode)
         {
             Rectangle colliderRect = new Rectangle(GetBounds().Left, GetBounds().Top, (int)Size.X, (int)Size.Y);
-            Engine.SpriteBatch.Draw(Engine.RectangleTexture, colliderRect, null, Color.Green * 0.5f, 0f, Vector2.Zero, SpriteEffects.None, 0f );
+            Engine.SpriteBatch.Draw(Engine.RectangleTexture, colliderRect, null, Color.Green * 0.5f, 0f, Vector2.Zero, SpriteEffects.None, 1f);
         }
     }
 }

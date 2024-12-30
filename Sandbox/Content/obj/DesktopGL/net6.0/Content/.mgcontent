@@ -4,9 +4,11 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/Dev/Game Dev/C# - MonoGame/GameEngine/Sandbox/Content/entities/fynn_spritesheet.png</File>
+    <File>D:/Dev/Game Dev/C# - MonoGame/GameEngine/Sandbox/Content/Characters/fynn_spritesheet.png</File>
+    <File>D:/Dev/Game Dev/C# - MonoGame/GameEngine/Sandbox/Content/Tilesets/plains_tileset.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>
