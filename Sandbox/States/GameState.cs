@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using GameEngine;
+using GameEngine.Tilemap;
 using ImGuiNET;
 using Microsoft.Xna.Framework;
 using MonoGame.ImGui;
@@ -10,12 +11,17 @@ namespace Sandbox.States;
 
 public class GameState : State
 {
+    private TilemapManager _tilemapManager;
+    
     public override void Enter()
     {
         Console.WriteLine("Entering Game State");
+
+        _tilemapManager = new TilemapManager(Assets.Maps.TestMap, Assets.Textures.Tilesets.PlainsTilesetTexture);
+        _tilemapManager.LoadGameObjects();
+        _tilemapManager.CreateColliders(Vector2.Zero);
         
         AddActor(new PlayerActor(new Vector2(200, 200)));
-        AddActor(new Solid(new Vector2(500, 200)));
     }
 
     public override void Update(GameTime gameTime)
@@ -25,7 +31,8 @@ public class GameState : State
 
     public override void Render()
     {
-        
+        _tilemapManager.Draw("Grass", Vector2.Zero, Color.White);
+        _tilemapManager.Draw("Dirt", Vector2.Zero, Color.White);
     }
 
     public override void RenderGui()
