@@ -16,7 +16,7 @@ public class Animation
         set => _currentFrame = value;
     }
     
-    public bool HasFinished => !Loop && _currentFrame == Frames.Length;
+    public bool HasFinished => !Loop && _currentFrame == Frames.Length - 1;
     
     public Animation(Spritesheet spritesheet, int[] frames, float frameDuration, bool loop = true)
     {

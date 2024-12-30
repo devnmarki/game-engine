@@ -30,7 +30,7 @@ public static class Assets
     {
         public static class Characters
         {
-            public static readonly Spritesheet FynnSpritesheet = new Spritesheet(Textures.Characters.FynnTexture, 8, 4, new Vector2(32, 32));
+            public static readonly Spritesheet FynnSpritesheet = new Spritesheet(Textures.Characters.FynnTexture, 12, 4, new Vector2(32, 32));
         }
     }
 }

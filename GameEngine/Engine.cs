@@ -36,7 +36,7 @@ public class Engine
 
     private ImGuiRenderer _guiRenderer;
 
-    public static bool DebugMode { get; set; } = true;
+    public static bool DebugMode { get; set; } = false;
     
     public Engine(Game game, GraphicsDeviceManager graphicsManager, GraphicsDevice graphics)
     {

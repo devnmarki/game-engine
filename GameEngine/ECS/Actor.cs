@@ -14,7 +14,7 @@ public class Actor
     private Spritesheet _spritesheet = null;
     private int _sprite = 0;
 
-    protected Animator Animator { get; set; }
+    public Animator Animator { get; set; }
 
     public Vector2 Position;
     
