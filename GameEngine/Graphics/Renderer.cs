@@ -19,4 +19,9 @@ public class Renderer
     {
         Engine.SpriteBatch.Draw(texture, position, src, Color.White, 0f, Vector2.Zero, Engine.GameScale, SpriteEffects.None, layerDepth);
     }
+
+    public void DrawTexture(Texture2D texture, Rectangle dst, Color color)
+    {
+        Engine.SpriteBatch.Draw(texture, dst, color);
+    }
 }

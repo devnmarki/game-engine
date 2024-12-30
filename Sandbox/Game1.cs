@@ -14,8 +14,7 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     
     private Engine _engine;
-    private ImGuiRenderer _renderer;
-
+    
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -27,9 +26,7 @@ public class Game1 : Game
     {
         _engine = new Engine(this, _graphics, GraphicsDevice);
         _engine.Init(Window, Content);
-
-        _renderer = new ImGuiRenderer(this).Initialize().RebuildFontAtlas();
-     
+        
         base.Initialize();
     }
 
@@ -49,6 +46,8 @@ public class Game1 : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
             Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
+
+        Engine.GameTime = gameTime;
         
         _engine.Update(gameTime);
         
@@ -67,14 +66,6 @@ public class Game1 : Game
         Engine.SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
         _engine.Draw();
         Engine.SpriteBatch.End();
-        
-        _renderer.BeginLayout(gameTime);
-        ImGui.Text("Hello");
-        if (ImGui.Button("Click Me"))
-        {
-            Console.WriteLine("Clicked :)");
-        }
-        _renderer.EndLayout();
 
         base.Draw(gameTime);
     }

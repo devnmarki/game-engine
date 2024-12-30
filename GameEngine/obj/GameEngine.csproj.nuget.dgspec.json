@@ -44,6 +44,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Box2DSharp": {
+              "target": "Package",
+              "version": "[0.6.0, )"
+            },
             "ImGui.NET": {
               "target": "Package",
               "version": "[1.78.0, )"
