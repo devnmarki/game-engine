@@ -14,7 +14,7 @@ public class GameState : State
     {
         Console.WriteLine("Entering Game State");
         
-        AddActor(new Player(new Vector2(200, 200)));
+        AddActor(new PlayerActor(new Vector2(200, 200)));
         AddActor(new Solid(new Vector2(500, 200)));
     }
 
