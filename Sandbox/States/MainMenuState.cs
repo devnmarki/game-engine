@@ -22,6 +22,11 @@ public class MainMenuState : State
         
     }
 
+    public override void RenderGui()
+    {
+        
+    }
+
     public override void Leave()
     {
         Console.WriteLine("Left Main Menu State");

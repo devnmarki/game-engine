@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "GameEngine/1.0.0": {
         "dependencies": {
+          "Box2DSharp": "0.6.0",
           "ImGui.NET": "1.78.0",
           "MonoGame.Framework.DesktopGL": "3.8.1.303"
         },
@@ -15,10 +16,22 @@
           "GameEngine.dll": {}
         }
       },
+      "Box2DSharp/0.6.0": {
+        "dependencies": {
+          "System.Memory": "4.5.3",
+          "System.Numerics.Vectors": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Box2DSharp.dll": {
+            "assemblyVersion": "0.6.0.0",
+            "fileVersion": "0.6.0.0"
+          }
+        }
+      },
       "ImGui.NET/1.78.0": {
         "dependencies": {
           "System.Buffers": "4.4.0",
-          "System.Numerics.Vectors": "4.4.0",
+          "System.Numerics.Vectors": "4.5.0",
           "System.Runtime.CompilerServices.Unsafe": "4.4.0"
         },
         "runtime": {
@@ -101,7 +114,8 @@
         }
       },
       "System.Buffers/4.4.0": {},
-      "System.Numerics.Vectors/4.4.0": {},
+      "System.Memory/4.5.3": {},
+      "System.Numerics.Vectors/4.5.0": {},
       "System.Runtime.CompilerServices.Unsafe/4.4.0": {}
     }
   },
@@ -110,6 +124,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Box2DSharp/0.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IG6Q/s0HGLBaE02jnTqsGvb31RgaKjjvQdEILU7OVwlf1aDyKN3bQXNpLPkMf6GjRVMrMPjcdV0lRZhyW19kLQ==",
+      "path": "box2dsharp/0.6.0",
+      "hashPath": "box2dsharp.0.6.0.nupkg.sha512"
     },
     "ImGui.NET/1.78.0": {
       "type": "package",
@@ -132,12 +153,19 @@
       "path": "system.buffers/4.4.0",
       "hashPath": "system.buffers.4.4.0.nupkg.sha512"
     },
-    "System.Numerics.Vectors/4.4.0": {
+    "System.Memory/4.5.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-UiLzLW+Lw6HLed1Hcg+8jSRttrbuXv7DANVj0DkL9g6EnnzbL75EB7EWsw5uRbhxd/4YdG8li5XizGWepmG3PQ==",
-      "path": "system.numerics.vectors/4.4.0",
-      "hashPath": "system.numerics.vectors.4.4.0.nupkg.sha512"
+      "sha512": "sha512-3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
+      "path": "system.memory/4.5.3",
+      "hashPath": "system.memory.4.5.3.nupkg.sha512"
+    },
+    "System.Numerics.Vectors/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
+      "path": "system.numerics.vectors/4.5.0",
+      "hashPath": "system.numerics.vectors.4.5.0.nupkg.sha512"
     },
     "System.Runtime.CompilerServices.Unsafe/4.4.0": {
       "type": "package",

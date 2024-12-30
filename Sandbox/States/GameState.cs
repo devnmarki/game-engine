@@ -15,6 +15,7 @@ public class GameState : State
         Console.WriteLine("Entering Game State");
         
         AddActor(new Player(new Vector2(200, 200)));
+        AddActor(new Solid(new Vector2(500, 200)));
     }
 
     public override void Update(GameTime gameTime)
@@ -25,6 +26,11 @@ public class GameState : State
     public override void Render()
     {
         
+    }
+
+    public override void RenderGui()
+    {
+
     }
 
     public override void Leave()

@@ -32,3 +32,4 @@ D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\runtimes\linux
 D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\runtimes\win-x64\native\cimgui.dll
 D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\runtimes\win-x86\native\cimgui.dll
 D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\runtimes\osx-x64\native\libcimgui.dylib
+D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\Box2DSharp.dll
