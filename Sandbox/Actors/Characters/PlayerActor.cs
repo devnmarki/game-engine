@@ -17,7 +17,7 @@ public class PlayerActor : Actor
     private float _speed = 5f;
     private Direction _direction = Direction.Down;
     
-    public PlayerActor(Vector2 position) : base(position)
+    public PlayerActor() : base()
     {
         
     }

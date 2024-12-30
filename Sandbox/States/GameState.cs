@@ -20,8 +20,6 @@ public class GameState : State
         _tilemapManager = new TilemapManager(Assets.Maps.TestMap, Assets.Textures.Tilesets.PlainsTilesetTexture);
         _tilemapManager.LoadGameObjects();
         _tilemapManager.CreateColliders(Vector2.Zero);
-        
-        AddActor(new PlayerActor(new Vector2(200, 200)));
     }
 
     public override void Update(GameTime gameTime)

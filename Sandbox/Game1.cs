@@ -3,8 +3,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using GameEngine;
+using GameEngine.Tilemap;
 using ImGuiNET;
 using MonoGame.ImGui;
+using Sandbox.Actors;
 using Sandbox.States;
 
 namespace Sandbox;
@@ -33,6 +35,8 @@ public class Game1 : Game
     protected override void LoadContent()
     {
         _engine.Load();
+        
+        TilemapManager.AddGameObjectToLoad("Player", () => new PlayerActor());
         
         _engine.AddState("game", new GameState());
         _engine.AddState("main_menu", new MainMenuState());
