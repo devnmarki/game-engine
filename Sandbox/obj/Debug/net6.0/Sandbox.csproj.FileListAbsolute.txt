@@ -36,3 +36,4 @@ D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\Box2DSharp.dll
 D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\Content\Characters\fynn_spritesheet.xnb
 D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\Content\Tilesets\plains_tileset.xnb
 D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\TiledSharp.dll
+D:\Dev\Game Dev\C# - MonoGame\GameEngine\Sandbox\bin\Debug\net6.0\Content\Items\Weapons\sword_spritesheet.xnb

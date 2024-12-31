@@ -1,3 +1,4 @@
+using System;
 using System.Reflection.Metadata;
 using GameEngine;
 using GameEngine.ECS;
@@ -7,6 +8,8 @@ using GameEngine.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Sandbox.Actors.Weapons;
+using Sandbox.Models;
 using Sandbox.Sprites;
 using Sandbox.Utils;
 
@@ -22,6 +25,8 @@ public class PlayerActor : Actor
 
     private bool _inAction = false;
     private bool _canMove = true;
+
+    private SwordWeapon _sword;
 
     public Vector2 Velocity
     {
@@ -40,19 +45,34 @@ public class PlayerActor : Actor
         get => _inAction;
         set => _inAction = value;
     }
+
+    public SwordWeapon Sword
+    {
+        get => _sword;
+        set => _sword = value;
+    }
     
     protected override void Create()
     {
         base.Create();
         
-        Colliders.Add(new Collider(this, new Vector2(16 * Engine.GameScale), new Vector2(8 * Engine.GameScale)));
-
+        base.Layer = Globals.Layers.PlayerLayer;
+        base.Colliders.Add(new Collider(this, new Vector2(16 * Engine.GameScale), new Vector2(8 * Engine.GameScale)));
+        
+        _sword = new SwordWeapon(WeaponModel.Models.FynnSword, SwordWeapon.SwordType.Fynn)
+        {
+            Position = Position
+        };
+        Engine.CurrentState.AddActor(_sword);
+        
         _sprite = new PlayerSprite(this);
         _sprite.Load();
     }
 
     public override void Update(GameTime gameTime)
     {
+        KeyboardHandler.GetState();
+        
         base.Update(gameTime);
         
         HandleControls();
@@ -69,8 +89,6 @@ public class PlayerActor : Actor
 
     private void HandleControls()
     {
-        KeyboardHandler.GetState();
-        
         _velocity = Vector2.Zero;
 
         if (KeyboardHandler.IsDown(Keys.Left))
@@ -95,13 +113,10 @@ public class PlayerActor : Actor
             _facingDirection = Direction.Down;
         }
 
-        if (KeyboardHandler.IsDown(Keys.Z))
+        if (KeyboardHandler.IsDown(Keys.Z) && !_inAction)
         {
-            if (!_inAction)
-            {
-                _inAction = true;
-                Attack();
-            }
+            _inAction = true;
+            Attack();
         }
     }
 
@@ -125,5 +140,10 @@ public class PlayerActor : Actor
     private void Attack()
     {
         _sprite.HandleAttackAnimations();
+
+        Console.WriteLine("Attack");
+        
+        _sword.Visible = true;
+        _sprite.HandleSwordSprite();
     }
 }

@@ -19,6 +19,9 @@ public class Actor
     public Vector2 Position;
     
     public List<Collider> Colliders { get; set; } = new List<Collider>();
+
+    public bool Visible { get; set; } = true;
+    public float Layer { get; set; } = 900f;
     
     public Actor()
     {
@@ -46,12 +49,15 @@ public class Actor
 
     public virtual void Draw()
     {
-        if (_texture != null)
-            _renderer.DrawTexture(_texture, Position);
-        if (_spritesheet != null)
-            _renderer.DrawTexture(_spritesheet.Texture, Position, _spritesheet.Sprites[_sprite]);
-        
-        Animator.Render();
+        if (Visible)
+        {
+            if (_texture != null)
+                _renderer.DrawTexture(_texture, Position, Layer / 1000f);
+            if (_spritesheet != null)
+                _renderer.DrawTexture(_spritesheet.Texture, Position, _spritesheet.Sprites[_sprite], Layer / 1000f);
+            
+            Animator.Render(Layer);
+        }
 
         foreach (var collider in Colliders)
         {

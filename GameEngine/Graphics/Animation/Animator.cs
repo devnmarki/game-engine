@@ -37,11 +37,11 @@ public class Animator
         CurrentAnimation?.Play();
     }
 
-    public void Render()
+    public void Render(float layer = 900f)
     {
         if (CurrentAnimation == null) return;
         
-        _renderer.DrawTexture(CurrentAnimation.Spritesheet.Texture, _actor.Position, CurrentAnimation.Spritesheet.Sprites[CurrentAnimation.Frames[CurrentAnimation.CurrentFrame]]);
+        _renderer.DrawTexture(CurrentAnimation.Spritesheet.Texture, _actor.Position, CurrentAnimation.Spritesheet.Sprites[CurrentAnimation.Frames[CurrentAnimation.CurrentFrame]], layer / 1000f);
     }
     
     public bool IsCurrentAnimationFinsihed()

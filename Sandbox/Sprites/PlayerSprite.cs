@@ -1,3 +1,4 @@
+using GameEngine;
 using GameEngine.Graphics;
 using Microsoft.Xna.Framework;
 using Sandbox.Actors;
@@ -26,10 +27,10 @@ public class PlayerSprite
         _player.Animator.AddAnimation("walk_left", new Animation(Assets.Spritesheets.Characters.FynnSpritesheet, new int[] { 24, 25 }, 0.15f));
         _player.Animator.AddAnimation("walk_right", new Animation(Assets.Spritesheets.Characters.FynnSpritesheet, new int[] { 28, 29 }, 0.15f));
         
-        _player.Animator.AddAnimation("attack_down", new Animation(Assets.Spritesheets.Characters.FynnSpritesheet, new int[] { 0, 32, 32 }, 0.25f, false));
-        _player.Animator.AddAnimation("attack_up", new Animation(Assets.Spritesheets.Characters.FynnSpritesheet, new int[] { 4, 36, 36 }, 0.25f, false));
-        _player.Animator.AddAnimation("attack_left", new Animation(Assets.Spritesheets.Characters.FynnSpritesheet, new int[] { 8, 40, 40 }, 0.25f, false));
-        _player.Animator.AddAnimation("attack_right", new Animation(Assets.Spritesheets.Characters.FynnSpritesheet, new int[] { 12, 44, 44 }, 0.25f, false));
+        _player.Animator.AddAnimation("attack_down", new Animation(Assets.Spritesheets.Characters.FynnSpritesheet, new int[] { 32, 32 }, 0.25f, false));
+        _player.Animator.AddAnimation("attack_up", new Animation(Assets.Spritesheets.Characters.FynnSpritesheet, new int[] { 36, 36 }, 0.25f, false));
+        _player.Animator.AddAnimation("attack_left", new Animation(Assets.Spritesheets.Characters.FynnSpritesheet, new int[] { 40, 40 }, 0.25f, false));
+        _player.Animator.AddAnimation("attack_right", new Animation(Assets.Spritesheets.Characters.FynnSpritesheet, new int[] { 44, 44 }, 0.25f, false));
         
         _player.Animator.PlayAnimation("idle_down");
     }
@@ -41,6 +42,7 @@ public class PlayerSprite
             if (_player.Animator.IsCurrentAnimationFinsihed())
             {
                 _player.InAction = false;
+                _player.Sword.Visible = false;
             }
             return;
         }
@@ -108,5 +110,45 @@ public class PlayerSprite
                 _player.Animator.PlayAnimation("attack_right");
                 break;
         }
+    }
+
+    public void HandleSwordSprite()
+    {
+        Vector2 swordOffset = Vector2.Zero;
+        
+        if (_player.Animator.CurrentAnimation == _player.Animator.GetAnimation("attack_down"))
+        {
+            _player.Sword.UseGraphics(Assets.Spritesheets.Weapons.FynnSwordSpritesheet, 1);
+            _player.Sword.Layer = Globals.Layers.ItemsLayer;
+            swordOffset = new Vector2(8, 20);
+        }
+        else if (_player.Animator.CurrentAnimation == _player.Animator.GetAnimation("attack_up"))
+        {
+            _player.Sword.UseGraphics(Assets.Spritesheets.Weapons.FynnSwordSpritesheet, 0);
+            _player.Sword.Layer = _player.Layer - 1;
+            swordOffset = new Vector2(8, 0);
+        }
+        else if (_player.Animator.CurrentAnimation == _player.Animator.GetAnimation("attack_left"))
+        {
+            _player.Sword.UseGraphics(Assets.Spritesheets.Weapons.FynnSwordSpritesheet, 2);
+            _player.Sword.Layer = Globals.Layers.ItemsLayer;
+            swordOffset = new Vector2(0, 14);
+        }
+        else if (_player.Animator.CurrentAnimation == _player.Animator.GetAnimation("attack_right"))
+        {
+            _player.Sword.UseGraphics(Assets.Spritesheets.Weapons.FynnSwordSpritesheet, 3);
+            _player.Sword.Layer = Globals.Layers.ItemsLayer;
+            swordOffset = new Vector2(15, 14);
+        }
+
+        _player.Sword.Position = _player.Position + swordOffset * Engine.GameScale;
+    }
+
+    private bool AttackAnimationPlaying()
+    {
+        return _player.Animator.CurrentAnimation == _player.Animator.GetAnimation("attack_down") ||
+               _player.Animator.CurrentAnimation == _player.Animator.GetAnimation("attack_up") ||
+               _player.Animator.CurrentAnimation == _player.Animator.GetAnimation("attack_left") ||
+               _player.Animator.CurrentAnimation == _player.Animator.GetAnimation("attack_right");
     }
 }
