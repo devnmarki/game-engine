@@ -16,12 +16,18 @@ public class SwordWeapon : Actor
     public SwordWeapon(WeaponModel.Weapon model, SwordType type)
     {
         Model = model;
+        
+        Create();
     }
 
     protected override void Create()
     {
         base.Create();
+
+        if (Model == null) return;
         
+        base.Tag = "weapon";
+        base.Name = Model.Name;
         base.Layer = Globals.Layers.ItemsLayer;
     }
 }

@@ -25,6 +25,18 @@
 /processorParam:TextureFormat=Color
 /build:Characters/fynn_spritesheet.png
 
+#begin Characters/rockling_spritesheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Characters/rockling_spritesheet.png
+
 #begin Items/Weapons/sword_spritesheet.png
 /importer:TextureImporter
 /processor:TextureProcessor

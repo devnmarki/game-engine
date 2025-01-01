@@ -19,8 +19,8 @@ public class PlayerActor : Actor
 {
     private PlayerSprite _sprite;
 
-    private KeyboardState currentKeyState;
-    private KeyboardState previousKeyState;
+    private KeyboardState _currentKeyState;
+    private KeyboardState _previousKeyState;
     
     private Vector2 _velocity = Vector2.Zero;
     private float _speed = 5f;
@@ -58,7 +58,9 @@ public class PlayerActor : Actor
     protected override void Create()
     {
         base.Create();
-        
+
+        base.Tag = "player";
+        base.Name = "Player";
         base.Layer = Globals.Layers.PlayerLayer;
         base.Colliders.Add(new Collider(this, new Vector2(16 * Engine.GameScale), new Vector2(8 * Engine.GameScale)));
         
@@ -104,8 +106,7 @@ public class PlayerActor : Actor
             _velocity.X = 1f;
             _facingDirection = Direction.Right;
         }
-
-        if (KeyboardHandler.IsDown(Keys.Up))
+        else if (KeyboardHandler.IsDown(Keys.Up))
         {
             _velocity.Y = -1f;
             _facingDirection = Direction.Up;
@@ -116,10 +117,10 @@ public class PlayerActor : Actor
             _facingDirection = Direction.Down;
         }
 
-        previousKeyState = currentKeyState;
-        currentKeyState = Keyboard.GetState();
+        _previousKeyState = _currentKeyState;
+        _currentKeyState = Keyboard.GetState();
 
-        if (currentKeyState.IsKeyDown(Keys.Z) && !previousKeyState.IsKeyDown(Keys.Z) && !_inAction)
+        if (_currentKeyState.IsKeyDown(Keys.Z) && !_previousKeyState.IsKeyDown(Keys.Z) && !_inAction)
         {
             _inAction = true;
             Attack();
@@ -146,8 +147,6 @@ public class PlayerActor : Actor
     private void Attack()
     {
         _sprite.HandleAttackAnimations();
-
-        Console.WriteLine("Attack");
         
         _sword.Visible = true;
         _sprite.HandleSwordSprite();

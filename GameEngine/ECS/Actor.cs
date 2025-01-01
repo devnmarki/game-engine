@@ -8,6 +8,10 @@ namespace GameEngine.ECS;
 
 public class Actor
 {
+    public Vector2 Position;
+    public string Tag;
+    public string Name;
+    
     private Renderer _renderer = new Renderer();
     
     private Texture2D _texture = null;
@@ -15,8 +19,6 @@ public class Actor
     private int _sprite = 0;
 
     public Animator Animator { get; set; }
-
-    public Vector2 Position;
     
     public List<Collider> Colliders { get; set; } = new List<Collider>();
 
@@ -26,13 +28,17 @@ public class Actor
     public Actor()
     {
         Position = Vector2.Zero;
-        
+        Tag = "untagged";
+        Name = "Actor"; 
+            
         Create();
     }
 
     public Actor(Vector2 position)
     {
         Position = position;
+        Tag = "untagged";
+        Name = "Actor";
 
         Create();
     }
