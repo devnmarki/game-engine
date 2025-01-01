@@ -18,6 +18,9 @@ namespace Sandbox.Actors;
 public class PlayerActor : Actor
 {
     private PlayerSprite _sprite;
+
+    private KeyboardState currentKeyState;
+    private KeyboardState previousKeyState;
     
     private Vector2 _velocity = Vector2.Zero;
     private float _speed = 5f;
@@ -113,7 +116,10 @@ public class PlayerActor : Actor
             _facingDirection = Direction.Down;
         }
 
-        if (KeyboardHandler.IsDown(Keys.Z) && !_inAction)
+        previousKeyState = currentKeyState;
+        currentKeyState = Keyboard.GetState();
+
+        if (currentKeyState.IsKeyDown(Keys.Z) && !previousKeyState.IsKeyDown(Keys.Z) && !_inAction)
         {
             _inAction = true;
             Attack();
