@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using GameEngine;
+using GameEngine.ECS;
 using GameEngine.Tilemap;
 using ImGuiNET;
 using Microsoft.Xna.Framework;
@@ -20,6 +21,9 @@ public class GameState : State
         _tilemapManager = new TilemapManager(Assets.Maps.TestMap, Assets.Textures.Tilesets.PlainsTilesetTexture);
         _tilemapManager.LoadGameObjects();
         _tilemapManager.CreateColliders(Vector2.Zero);
+        
+        Console.WriteLine(Engine.FindActorWithTag("player"));
+        Console.WriteLine(Engine.FindActorOfType(typeof(PlayerActor)));
     }
 
     public override void Update(GameTime gameTime)
