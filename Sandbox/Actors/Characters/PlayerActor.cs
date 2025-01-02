@@ -8,6 +8,7 @@ using GameEngine.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Sandbox.Actors.Enemies;
 using Sandbox.Actors.Weapons;
 using Sandbox.Models;
 using Sandbox.Sprites;
@@ -63,6 +64,7 @@ public class PlayerActor : Actor
         base.Name = "Player";
         base.Layer = Globals.Layers.PlayerLayer;
         base.Colliders.Add(new Collider(this, new Vector2(16 * Engine.GameScale), new Vector2(8 * Engine.GameScale)));
+        base.CollisionIgnoreList.Add(typeof(RocklingEnemy));
         
         _sword = new SwordWeapon(WeaponModel.Models.FynnSword, SwordWeapon.SwordType.Fynn)
         {

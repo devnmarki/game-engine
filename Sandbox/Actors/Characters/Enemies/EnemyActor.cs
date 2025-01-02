@@ -28,6 +28,8 @@ public class EnemyActor : Actor
 
         base.Tag = "enemy";
         base.Name = Name;
+        
+        base.CollisionIgnoreList.Add(typeof(PlayerActor));
     }
 
     public override void Update(GameTime gameTime)

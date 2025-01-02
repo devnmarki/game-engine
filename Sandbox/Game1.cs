@@ -7,6 +7,7 @@ using GameEngine.Tilemap;
 using ImGuiNET;
 using MonoGame.ImGui;
 using Sandbox.Actors;
+using Sandbox.Actors.Enemies;
 using Sandbox.States;
 
 namespace Sandbox;
@@ -37,6 +38,7 @@ public class Game1 : Game
         _engine.Load();
         
         TilemapManager.AddGameObjectToLoad("Player", () => new PlayerActor());
+        TilemapManager.AddGameObjectToLoad("Rockling", () => new RocklingEnemy());
         
         _engine.AddState("game", new GameState());
         _engine.AddState("main_menu", new MainMenuState());
