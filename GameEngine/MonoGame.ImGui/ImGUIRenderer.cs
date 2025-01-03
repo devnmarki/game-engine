@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using GameEngine;
 using ImGuiNET;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -26,8 +27,8 @@ public class ImGuiRenderer {
     public GraphicsDevice GraphicsDevice => Owner.GraphicsDevice;
 
 
-    public virtual void BeginLayout(GameTime gameTime) {
-        ImGuiNET.ImGui.GetIO().DeltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
+    public virtual void BeginLayout() {
+        ImGuiNET.ImGui.GetIO().DeltaTime = (float) Engine.GameTime.ElapsedGameTime.TotalSeconds;
         _inputData.Update(Owner);
 
         ImGuiNET.ImGui.NewFrame();

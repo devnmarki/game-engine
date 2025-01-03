@@ -21,9 +21,6 @@ public class GameState : State
         _tilemapManager = new TilemapManager(Assets.Maps.TestMap, Assets.Textures.Tilesets.PlainsTilesetTexture);
         _tilemapManager.LoadGameObjects();
         _tilemapManager.CreateColliders(Vector2.Zero);
-        
-        Console.WriteLine(Engine.FindActorWithTag("player"));
-        Console.WriteLine(Engine.FindActorOfType(typeof(PlayerActor)));
     }
 
     public override void Update(GameTime gameTime)
@@ -39,7 +36,13 @@ public class GameState : State
 
     public override void RenderGui()
     {
+        bool debugMode = Engine.DebugMode;
+        
+        GuiRenderer.BeginLayout();
+        ImGui.Checkbox("Debug", ref debugMode);
+        GuiRenderer.EndLayout();
 
+        Engine.DebugMode = debugMode;
     }
 
     public override void Leave()

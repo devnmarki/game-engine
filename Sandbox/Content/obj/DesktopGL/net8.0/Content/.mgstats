@@ -1,0 +1,5 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"D:/Dev/Game Dev/C# - MonoGame/GameEngine/Sandbox/Content/Characters/fynn_spritesheet.png","D:/Dev/Game Dev/C# - MonoGame/GameEngine/Sandbox/Content/bin/DesktopGL/Content/Characters/fynn_spritesheet.xnb","TextureProcessor","Texture2DContent",3348,196693,0.1536342
+"D:/Dev/Game Dev/C# - MonoGame/GameEngine/Sandbox/Content/Characters/rockling_spritesheet.png","D:/Dev/Game Dev/C# - MonoGame/GameEngine/Sandbox/Content/bin/DesktopGL/Content/Characters/rockling_spritesheet.xnb","TextureProcessor","Texture2DContent",956,16469,0.005999
+"D:/Dev/Game Dev/C# - MonoGame/GameEngine/Sandbox/Content/Items/Weapons/sword_spritesheet.png","D:/Dev/Game Dev/C# - MonoGame/GameEngine/Sandbox/Content/bin/DesktopGL/Content/Items/Weapons/sword_spritesheet.xnb","TextureProcessor","Texture2DContent",486,5205,0.0051523
+"D:/Dev/Game Dev/C# - MonoGame/GameEngine/Sandbox/Content/Tilesets/plains_tileset.png","D:/Dev/Game Dev/C# - MonoGame/GameEngine/Sandbox/Content/bin/DesktopGL/Content/Tilesets/plains_tileset.xnb","TextureProcessor","Texture2DContent",1271,20565,0.0069238

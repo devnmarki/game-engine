@@ -16,6 +16,7 @@ public class Engine
     public string GameTitle { get; set; } = "Game | v0.1";
     public static float GameScale { get; set; } = 4f;
     public static SpriteBatch SpriteBatch { get; set; }
+    public static SpriteBatch GuiBatch { get; set; }
     public static ContentManager Content { get; set; }
     public static GameTime GameTime { get; set; }
     public static float DeltaTime { get; set; }
@@ -44,7 +45,9 @@ public class Engine
         _game = game;
         _graphics = graphics;
         _graphicsManager = graphicsManager;
+        
         SpriteBatch = new SpriteBatch(graphics);
+        GuiBatch = new SpriteBatch(graphics);
     }
 
     public void Init(GameWindow window, ContentManager content)
@@ -65,7 +68,18 @@ public class Engine
         RectangleTexture.SetData(new Color[] { Color.White });
     }
 
-    public void Draw()
+    public void Render()
+    {
+        SpriteBatch.Begin(samplerState: SamplerState.PointClamp, sortMode: SpriteSortMode.FrontToBack);
+        DrawSprites();
+        SpriteBatch.End();
+        
+        GuiBatch.Begin();
+        DrawGui();
+        GuiBatch.End();
+    }
+
+    private void DrawSprites()
     {
         CurrentState?.Render();
         
@@ -75,12 +89,16 @@ public class Engine
             actor.Draw();
         }
         
+    }
+
+    private void DrawGui()
+    {
         CurrentState?.RenderGui();
     }
 
     public void Update(GameTime gameTime)
     {
-        HandleDebugMode();
+        // HandleDebugMode();
         
         CurrentState?.Update(gameTime);
 
@@ -211,14 +229,14 @@ public class Engine
         return targetList;
     }
     
-    private void HandleDebugMode()
-    {
-        KeyboardHandler.GetState();
-
-        if (KeyboardHandler.IsPressed(Keys.Tab))
-        {
-            DebugMode = !DebugMode;
-        }
-    }
+    // private void HandleDebugMode()
+    // {
+    //     KeyboardHandler.GetState();
+    //
+    //     if (KeyboardHandler.IsPressed(Keys.Tab))
+    //     {
+    //         DebugMode = !DebugMode;
+    //     }
+    // }
 
 }

@@ -14,22 +14,25 @@ public class EnemyActor : Actor
         Attack
     }
     
-    protected string Name { get; set; }
-
-    public EnemyState CurrentState { get; set; } = EnemyState.None;
+    public EnemyState CurrentState { get; set; }
     
     protected Action OnIdleState;
     protected Action OnPatrolState;
     protected Action OnAttackState;
+
+    public EnemyActor()
+    {
+        base.Tag = "enemy";
+        base.Name = "Enemy";
+        base.Layer = Globals.Layers.EnemiesLayer;
+        base.CollisionIgnoreList.Add(typeof(PlayerActor));
+    }
     
     protected override void Create()
     {
         base.Create();
 
-        base.Tag = "enemy";
-        base.Name = Name;
-        
-        base.CollisionIgnoreList.Add(typeof(PlayerActor));
+        CurrentState = EnemyState.None;
     }
 
     public override void Update(GameTime gameTime)
