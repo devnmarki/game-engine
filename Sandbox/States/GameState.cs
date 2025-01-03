@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using GameEngine;
+using GameEngine.ECS;
 using GameEngine.Tilemap;
 using ImGuiNET;
 using Microsoft.Xna.Framework;
@@ -35,7 +36,13 @@ public class GameState : State
 
     public override void RenderGui()
     {
+        bool debugMode = Engine.DebugMode;
+        
+        GuiRenderer.BeginLayout();
+        ImGui.Checkbox("Debug", ref debugMode);
+        GuiRenderer.EndLayout();
 
+        Engine.DebugMode = debugMode;
     }
 
     public override void Leave()

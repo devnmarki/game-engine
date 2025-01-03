@@ -16,6 +16,7 @@ public class Engine
     public string GameTitle { get; set; } = "Game | v0.1";
     public static float GameScale { get; set; } = 4f;
     public static SpriteBatch SpriteBatch { get; set; }
+    public static SpriteBatch GuiBatch { get; set; }
     public static ContentManager Content { get; set; }
     public static GameTime GameTime { get; set; }
     public static float DeltaTime { get; set; }
@@ -26,6 +27,7 @@ public class Engine
 
     private GraphicsDeviceManager _graphicsManager;
     private GraphicsDevice _graphics; 
+    
     private Game _game;
     
     public static Texture2D RectangleTexture { get; set; }
@@ -43,7 +45,9 @@ public class Engine
         _game = game;
         _graphics = graphics;
         _graphicsManager = graphicsManager;
+        
         SpriteBatch = new SpriteBatch(graphics);
+        GuiBatch = new SpriteBatch(graphics);
     }
 
     public void Init(GameWindow window, ContentManager content)
@@ -64,7 +68,18 @@ public class Engine
         RectangleTexture.SetData(new Color[] { Color.White });
     }
 
-    public void Draw()
+    public void Render()
+    {
+        SpriteBatch.Begin(samplerState: SamplerState.PointClamp, sortMode: SpriteSortMode.FrontToBack);
+        DrawSprites();
+        SpriteBatch.End();
+        
+        GuiBatch.Begin();
+        DrawGui();
+        GuiBatch.End();
+    }
+
+    private void DrawSprites()
     {
         CurrentState?.Render();
         
@@ -74,12 +89,16 @@ public class Engine
             actor.Draw();
         }
         
+    }
+
+    private void DrawGui()
+    {
         CurrentState?.RenderGui();
     }
 
     public void Update(GameTime gameTime)
     {
-        HandleDebugMode();
+        // HandleDebugMode();
         
         CurrentState?.Update(gameTime);
 
@@ -122,15 +141,102 @@ public class Engine
             throw new ArgumentException($"State '{stateName}' does not exist.", nameof(stateName));
         }
     }
-    
-    private void HandleDebugMode()
-    {
-        KeyboardHandler.GetState();
 
-        if (KeyboardHandler.IsPressed(Keys.Tab))
+    public static Actor FindActorWithTag(string tag)
+    {
+        Actor target = null!;
+        foreach (var actor in CurrentState.Actors)
         {
-            DebugMode = !DebugMode;
+            if (actor.Tag != tag) continue;
+
+            target = actor;
+            break;
         }
+        
+        if (target == null) Console.WriteLine("Unable to find actor with tag " + tag);
+
+        return target;
     }
+
+    public static List<Actor> FindActorsWithTag(string tag)
+    {
+        List<Actor> targetList = new List<Actor>();
+        foreach (var actor in CurrentState.Actors)
+        {
+            if (actor.Tag != tag) continue;
+            
+            targetList.Add(actor);
+        }
+
+        return targetList;
+    }
+    
+    public static Actor FindActorWithName(string name)
+    {
+        Actor target = null!;
+        foreach (var actor in CurrentState.Actors)
+        {
+            if (actor.Name != name) continue;
+
+            target = actor;
+            break;
+        }
+        
+        if (target == null) Console.WriteLine("Unable to find actor with name " + name);
+
+        return target;
+    }
+    
+    public static List<Actor> FindActorsWithName(string name)
+    {
+        List<Actor> targetList = new List<Actor>();
+        foreach (var actor in CurrentState.Actors)
+        {
+            if (actor.Name != name) continue;
+            
+            targetList.Add(actor);
+        }
+
+        return targetList;
+    }
+
+    public static Actor FindActorOfType(Type type)
+    {
+        Actor target = null!;
+        foreach (var actor in CurrentState.Actors)
+        {
+            if (actor.GetType() != type) continue;
+
+            target = actor;
+            break;
+        }
+        
+        if (target == null) Console.WriteLine("Unable to find actor of type " + type);
+
+        return target;
+    }
+    
+    public static List<Actor> FindActorsOfType(Type type)
+    {
+        List<Actor> targetList = new List<Actor>();
+        foreach (var actor in CurrentState.Actors)
+        {
+            if (actor.GetType() != type) continue;
+            
+            targetList.Add(actor);
+        }
+
+        return targetList;
+    }
+    
+    // private void HandleDebugMode()
+    // {
+    //     KeyboardHandler.GetState();
+    //
+    //     if (KeyboardHandler.IsPressed(Keys.Tab))
+    //     {
+    //         DebugMode = !DebugMode;
+    //     }
+    // }
 
 }
